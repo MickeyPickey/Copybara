@@ -7,5 +7,7 @@ externals:
   External/EmbeddedLibs/AceConfig-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConfig-3.0
   External/EmbeddedLibs/AceDB-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceDB-3.0
   External/EmbeddedLibs/AceEvent-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceEvent-3.0
+  External/EmbeddedLibs/AceConsole-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConsole-3.0
+  External/EmbeddedLibs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
 
 enable-nolib-creation: no
