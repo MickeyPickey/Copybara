@@ -139,6 +139,7 @@ end
 function Copybara:SaveConfig()
    local currentProfile = self.DB:GetCurrentProfile()
 
+   self.DB.profiles[currentProfile] = self.DB.profiles[currentProfile] or {}
    self.DB.profiles[currentProfile].chatConfig = self:GetConfig()
 end
 
