@@ -6,9 +6,9 @@ setglobal("Copybara", Copybara)
 
 -- WoW API's
 local _G = _G
-local GetAddOnMetadata, GetChatWindowInfo, GetChatWindowMessages, GetChatWindowChannels, RemoveChatWindowMessages, GetChatWindowSavedDimensions, GetChatWindowSavedPosition, SetChatWindowName, SetChatWindowColor, SetChatWindowAlpha, SetChatWindowSize, SetChatWindowShown, SetChatWindowLocked, SetChatWindowDocked, SetChatWindowUninteractable, SetChatWindowSavedDimensions = GetAddOnMetadata, GetChatWindowInfo, GetChatWindowMessages, GetChatWindowChannels, RemoveChatWindowMessages, GetChatWindowSavedDimensions, GetChatWindowSavedPosition, SetChatWindowName, SetChatWindowColor, SetChatWindowAlpha, SetChatWindowSize, SetChatWindowShown, SetChatWindowLocked, SetChatWindowDocked, SetChatWindowUninteractable, SetChatWindowSavedDimensions
+local GetAddOnMetadata, GetChatWindowInfo, GetChatWindowMessages, GetChatWindowChannels, GetChatWindowSavedDimensions, GetChatWindowSavedPosition, SetChatWindowName, SetChatWindowColor, SetChatWindowAlpha, SetChatWindowSize, SetChatWindowShown, SetChatWindowLocked, SetChatWindowDocked, SetChatWindowUninteractable, SetChatWindowSavedDimensions = GetAddOnMetadata, GetChatWindowInfo, GetChatWindowMessages, GetChatWindowChannels, GetChatWindowSavedDimensions, GetChatWindowSavedPosition, SetChatWindowName, SetChatWindowColor, SetChatWindowAlpha, SetChatWindowSize, SetChatWindowShown, SetChatWindowLocked, SetChatWindowDocked, SetChatWindowUninteractable, SetChatWindowSavedDimensions
 
-local ChatFrame_RemoveAllMessageGroups, ChatFrame_RemoveAllChannels, ChatFrame_ReceiveAllPrivateMessages, ChatFrame_AddMessageGroup= ChatFrame_RemoveAllMessageGroups, ChatFrame_RemoveAllChannels, ChatFrame_ReceiveAllPrivateMessages, ChatFrame_AddMessageGroup
+local ChatFrame_RemoveAllMessageGroups, ChatFrame_RemoveAllChannels, ChatFrame_ReceiveAllPrivateMessages, ChatFrame_AddMessageGroup = ChatFrame_RemoveAllMessageGroups, ChatFrame_RemoveAllChannels, ChatFrame_ReceiveAllPrivateMessages, ChatFrame_AddMessageGroup
 
 local private = {}
 
