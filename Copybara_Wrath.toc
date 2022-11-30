@@ -1,0 +1,29 @@
+## Interface: 30400
+## Title: Copybara
+## Author: @project-author@
+## Version: @project-version@
+## DefaultState: Enabled
+## SavedVariables: CopybaraDB
+## Notes: Addon to copy your chat tabs and settings from one character to another.
+## Notes-ruRU: Аддон для копирования вкладок и настроек чата с одного персонажа на другого.
+
+## X-Category: Chat
+# X-Curse-Project-ID: ?
+
+# External libs
+External\EmbeddedLibs\LibStub\LibStub.lua
+External\EmbeddedLibs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+External\EmbeddedLibs\AceAddon-3.0\AceAddon-3.0.xml
+External\EmbeddedLibs\AceConfig-3.0\AceConfig-3.0.xml
+External\EmbeddedLibs\AceDB-3.0\AceDB-3.0.xml
+External\EmbeddedLibs\AceEvent-3.0\AceEvent-3.0.xml
+#External\EmbeddedLibs\AceTimer-3.0\AceTimer-3.0.xml
+#External\EmbeddedLibs\AceHook-3.0\AceHook-3.0.xml
+#External\EmbeddedLibs\AceLocale-3.0\AceLocale-3.0.xml
+#External\EmbeddedLibs\AceConsole-3.0\AceConsole-3.0.xml
+#External\EmbeddedLibs\AceGUI-3.0\AceGUI-3.0.xml
+#External\EmbeddedLibs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+#External\EmbeddedLibs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+
+# Core files
+Copybara.lua

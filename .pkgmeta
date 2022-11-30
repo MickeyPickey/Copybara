@@ -1,0 +1,18 @@
+package-as: Copybara
+
+externals:
+  External/EmbeddedLibs/LibStub: https://repos.curseforge.com/wow/libstub/trunk
+  External/EmbeddedLibs/CallbackHandler-1.0: https://repos.curseforge.com/wow/callbackhandler/trunk/CallbackHandler-1.0
+  External/EmbeddedLibs/AceAddon-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceAddon-3.0
+  External/EmbeddedLibs/AceEvent-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceEvent-3.0
+  External/EmbeddedLibs/AceTimer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceTimer-3.0
+  External/EmbeddedLibs/AceHook-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceHook-3.0
+  External/EmbeddedLibs/AceDB-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceDB-3.0
+  External/EmbeddedLibs/AceLocale-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceLocale-3.0
+  External/EmbeddedLibs/AceConsole-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConsole-3.0
+  External/EmbeddedLibs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
+  External/EmbeddedLibs/AceConfig-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConfig-3.0
+  External/EmbeddedLibs/LibDataBroker-1.1: https://github.com/tekkub/libdatabroker-1-1
+  External/EmbeddedLibs/LibDBIcon-1.0: https://repos.curseforge.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
+
+enable-nolib-creation: no
