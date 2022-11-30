@@ -37,23 +37,23 @@ Options.constructor = {
          style = "dropdown",
          values = function(self)
             local profileNames = {}
-            
+
             for name in pairs(Copybara.Options.DB.profiles) do
                profileNames[name] = name
             end
-            
+
             return profileNames
          end,
          sorting = function(self)
             local values = self.option.values()
             local tempTbl = {}
-            
+
             for key in pairs(values) do
                table.insert(tempTbl, key)
             end
-            
+
             table.sort(tempTbl)
-            
+
             return tempTbl
          end,
          order = 1,
@@ -101,7 +101,7 @@ end
 
 function Copybara:GetConfig()
    local chatConfig = {}
-   
+
    for i = 1, NUM_CHAT_WINDOWS do
       local f = _G["ChatFrame" .. i]
       local width, height = GetChatWindowSavedDimensions(i)
@@ -110,7 +110,7 @@ function Copybara:GetConfig()
       local DefaultMessages = { GetChatWindowMessages(f:GetID()) }
       local DefaultChannels = { GetChatWindowChannels(f:GetID()) }
 
-      
+
       chatConfig[i] = {
          width = width,
          height = height,
@@ -132,25 +132,24 @@ function Copybara:GetConfig()
          parentName = f:GetParent():GetName(),
       }
    end
-   
+
    return chatConfig
 end
 
 function Copybara:SaveConfig()
    local currentProfile = self.DB:GetCurrentProfile()
-   
+
    self.DB.profiles[currentProfile].chatConfig = self:GetConfig()
 end
 
 function Copybara:LoadConfig(config)
-   
+
    local currentProfile = self.DB:GetCurrentProfile()
    local selectedCharacter = self.DB.profiles[currentProfile].selectedCharacter
-   
+
    if selectedCharacter then
       local config = config or self.DB.profiles[selectedCharacter].chatConfig
 
-      
       for chatFrameIndex = 1, NUM_CHAT_WINDOWS do
           local chatFrame = _G["ChatFrame" .. chatFrameIndex]
           --local chatTab = _G["ChatFrame" .. chatFrameIndex .. "Tab"]
@@ -197,10 +196,10 @@ end
 function Options:Setter(...)
    local info, arg2, arg3 = ...
    local scope = private.GetDBScopeForInfo(self.DB.profile, info)
-   
+
    local key = info[#info]
    local val = arg2
-   
+
    if arg3 ~= nil then
       local subKey = arg2
       val = arg3
@@ -214,22 +213,22 @@ function Options:Getter(...)
    local info, subKey = ...
    local infoScope = private.GetDBScopeForInfo(self.DB.profile, info)
    local key = info[#info]
-   
+
    if subKey then
       return infoScope[key][subKey]
    end
-   
+
    return infoScope[key]
 end
 
 function private.GetDBScopeForInfo(DB, info)
    assert(DB and info and type(info) == "table" and type(DB) == "table")
-   
+
    local scope = DB
-   
+
    for i = 1, #info - 1 do
       scope = scope[info[i]]
    end
-   
+
    return scope
 end

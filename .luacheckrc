@@ -36,6 +36,15 @@ globals = {
   -- misc custom
   "LibStub",
 
+  -- Manually added API function
+  "ChatFrame_ReceiveAllPrivateMessages",
+  "ChatFrame_AddMessageGroup",
+  "ChatFrame_AddChannel",
+  "FCF_ResetAllWindows",
+
+  -- Manually added globals
+  "NUM_CHAT_WINDOWS",
+
   -- Api functions
   "GetNumPrimaryProfessions",
   "GetNumSkillLines",
