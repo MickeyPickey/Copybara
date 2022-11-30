@@ -8,7 +8,7 @@
 ## Notes-ruRU: Аддон для копирования вкладок и настроек чата с одного персонажа на другого.
 
 ## X-Category: Chat
-# X-Curse-Project-ID: 715273
+## X-Curse-Project-ID: 715273
 
 # External libs
 External\EmbeddedLibs\LibStub\LibStub.lua
