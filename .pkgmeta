@@ -9,5 +9,15 @@ externals:
   External/EmbeddedLibs/AceEvent-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceEvent-3.0
   External/EmbeddedLibs/AceConsole-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConsole-3.0
   External/EmbeddedLibs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
+  External/EmbeddedLibs/AceSerializer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceSerializer-3.0
+  External/EmbeddedLibs/LibCompress: https://repos.curseforge.com/wow/libcompress/trunk
+  External/EmbeddedLibs/LibDeflate:
+    url: https://github.com/SafeteeWoW/LibDeflate
+    tag: v1.0.0-release
+  External/EmbeddedLibs/LibSerialize:
+    url: https://github.com/rossnichols/LibSerialize
+    tag: v1.0.0
+  External/EmbeddedLibs/
+
 
 enable-nolib-creation: no

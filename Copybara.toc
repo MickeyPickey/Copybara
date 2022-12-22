@@ -19,6 +19,10 @@ External\EmbeddedLibs\AceConfig-3.0\AceConfig-3.0.xml
 External\EmbeddedLibs\AceDB-3.0\AceDB-3.0.xml
 External\EmbeddedLibs\AceEvent-3.0\AceEvent-3.0.xml
 External\EmbeddedLibs\AceConsole-3.0\AceConsole-3.0.xml
+External\EmbeddedLibs\AceSerializer-3.0\AceSerializer-3.0.xml
+External\EmbeddedLibs\LibCompress\LibCompress.lua
+External\EmbeddedLibs\LibDeflate\LibDeflate.lua
+External\EmbeddedLibs\LibSerialize\lib.xml
 #External\EmbeddedLibs\AceTimer-3.0\AceTimer-3.0.xml
 #External\EmbeddedLibs\AceHook-3.0\AceHook-3.0.xml
 #External\EmbeddedLibs\AceLocale-3.0\AceLocale-3.0.xml

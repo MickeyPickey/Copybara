@@ -1,8 +1,19 @@
 local TocName, Env = ...
 local Copybara = LibStub("AceAddon-3.0"):NewAddon(TocName, "AceConsole-3.0", "AceEvent-3.0")
-Copybara.displayName = GetAddOnMetadata(TocName, "Title")
 Env.Addon = Copybara
+Copybara.displayName = GetAddOnMetadata(TocName, "Title")
 setglobal("Copybara", Copybara)
+
+local AceGUI = LibStub('AceGUI-3.0')
+local Compresser = LibStub:GetLibrary("LibCompress")
+local LibDeflate = LibStub:GetLibrary("LibDeflate")
+local Serializer = LibStub:GetLibrary("AceSerializer-3.0")
+local LibSerialize = LibStub("LibSerialize")
+
+local configForDeflate = {level = 9}
+local configForLS = {
+   errorOnUnserializableType =  false
+}
 
 -- WoW API's
 local _G = _G
@@ -61,14 +72,51 @@ Options.constructor = {
       copy = {
          type = "execute",
          desc = "Copying chat settings from the selected character to the character you are currently on",
-         name = CALENDAR_COPY_EVENT,
+         name = APPLY,
          order = 2,
          func = function(self)
-            Copybara:LoadConfig()
-            ReloadUI()
+            local currentProfile = Copybara.DB:GetCurrentProfile()
+            local selectedCharacter = Copybara.DB.profiles[currentProfile].selectedCharacter
+
+            if selectedCharacter then
+               local chatConfig = Copybara.DB.profiles[selectedCharacter].chatConfig
+               Copybara:LoadConfig(chatConfig)
+            end
          end,
       },
-      br1 = { type = "description", name = "", order = 1},
+      br1 = { type = "description", name = "", order = 3},
+      transmitInputBox = {
+         type = "input",
+         name = "Import/Export",
+         multiline = true,
+         width = "double",
+         --dialogControl = "TransmitInputBox",
+         order = 4,
+         get = function(self)
+            return private.transmitInputBoxText or ""
+         end,
+         set = function(self, value)
+            private.transmitInputBoxText = value
+         end,
+      },
+      br2 = { type = "description", name = "", order = 5},
+      import = {
+         type = "execute",
+         name = "Import",
+         order = 6,
+         func = function(self)
+            Copybara:ImportConfigString()
+         end,
+      },
+      export = {
+         type = "execute",
+         name = "Export",
+         order = 7,
+         func = function(self)
+            Copybara:ExportConfig()
+         end,
+      },
+      br3 = { type = "description", name = "", order = 99},
       reset = {
          type = "execute",
          name = CHAT_DEFAULTS,
@@ -94,7 +142,7 @@ function Copybara:OnInitialize()
    self.DB = LibStub("AceDB-3.0"):New(TocName .. "DB", self.Options.defaults)
    self.Options.DB = self.DB
    LibStub("AceConfig-3.0"):RegisterOptionsTable(self.displayName, self.Options.constructor)
-   LibStub("AceConfigDialog-3.0"):AddToBlizOptions(self.displayName, self.displayName)
+   self.optionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(self.displayName, self.displayName)
 
    self:RegisterEvent("PLAYER_LOGOUT", "SaveConfig")
 end
@@ -143,14 +191,36 @@ function Copybara:SaveConfig()
    self.DB.profiles[currentProfile].chatConfig = self:GetConfig()
 end
 
-function Copybara:LoadConfig(config)
+function Copybara:ImportConfigString()
+   local input = private.transmitInputBoxText
+   local chatConfig = private.StringToTable(input)
 
+   if type(chatConfig) == "table" then
+      self:LoadConfig(chatConfig)
+   else
+      self:Print("Error: Invalid input string, try again.")
+   end
+end
+
+function Copybara:ExportConfig()
+   local exportString = Copybara:GetExportString()
+   private.transmitInputBoxText = exportString
+end
+
+function Copybara:GetExportString()
    local currentProfile = self.DB:GetCurrentProfile()
    local selectedCharacter = self.DB.profiles[currentProfile].selectedCharacter
 
    if selectedCharacter then
-      local config = config or self.DB.profiles[selectedCharacter].chatConfig
+      local chatConfig = self.DB.profiles[selectedCharacter].chatConfig
+      local encodedChatConfig = private.TableToString(chatConfig)
 
+      return encodedChatConfig
+   end
+end
+
+function Copybara:LoadConfig(config)
+   if config then
       for chatFrameIndex = 1, NUM_CHAT_WINDOWS do
           local chatFrame = _G["ChatFrame" .. chatFrameIndex]
           --local chatTab = _G["ChatFrame" .. chatFrameIndex .. "Tab"]
@@ -191,6 +261,8 @@ function Copybara:LoadConfig(config)
             ChatFrame_AddChannel(chatFrame, channel)
           end
       end
+
+      ReloadUI()
    end
 end
 
@@ -220,6 +292,41 @@ function Options:Getter(...)
    end
 
    return infoScope[key]
+end
+
+function private.StringToTable(inString)
+   local _, _, _, encoded = inString:find("^(!COPYBARA:)(.+)$")
+
+   if encoded then
+      local decoded = LibDeflate:DecodeForPrint(encoded)
+
+      if not decoded then
+         return "Error decoding."
+      end
+
+      local decompressed = LibDeflate:DecompressDeflate(decoded)
+
+      if not(decompressed) then
+         return "Error decompressing"
+      end
+
+      local success, deserialized = LibSerialize:Deserialize(decompressed)
+
+      if not(success) then
+         return "Error deserializing"
+      end
+
+      return deserialized
+   end
+end
+
+function private.TableToString(inTable)
+   local serialized = LibSerialize:SerializeEx(configForLS, inTable)
+   local compressed = LibDeflate:CompressDeflate(serialized, configForDeflate)
+   
+   local encoded = "!COPYBARA:"
+   encoded = encoded .. LibDeflate:EncodeForPrint(compressed)
+   return encoded
 end
 
 function private.GetDBScopeForInfo(DB, info)
