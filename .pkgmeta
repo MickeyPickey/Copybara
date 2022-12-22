@@ -13,7 +13,7 @@ externals:
   External/EmbeddedLibs/LibCompress: https://repos.curseforge.com/wow/libcompress/trunk
   External/EmbeddedLibs/LibDeflate:
     url: https://github.com/SafeteeWoW/LibDeflate
-    tag: v1.0.0-release
+    tag: 1.0.0-release
   External/EmbeddedLibs/LibSerialize:
     url: https://github.com/rossnichols/LibSerialize
     tag: v1.0.0
