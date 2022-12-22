@@ -323,7 +323,7 @@ end
 function private.TableToString(inTable)
    local serialized = LibSerialize:SerializeEx(configForLS, inTable)
    local compressed = LibDeflate:CompressDeflate(serialized, configForDeflate)
-   
+
    local encoded = "!COPYBARA:"
    encoded = encoded .. LibDeflate:EncodeForPrint(compressed)
    return encoded
