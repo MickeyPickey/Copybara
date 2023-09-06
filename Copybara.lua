@@ -4,10 +4,10 @@ Env.Addon = Copybara
 Copybara.displayName = GetAddOnMetadata(TocName, "Title")
 setglobal("Copybara", Copybara)
 
-local AceGUI = LibStub('AceGUI-3.0')
-local Compresser = LibStub:GetLibrary("LibCompress")
+--local AceGUI = LibStub('AceGUI-3.0')
+--local Compresser = LibStub:GetLibrary("LibCompress")
 local LibDeflate = LibStub:GetLibrary("LibDeflate")
-local Serializer = LibStub:GetLibrary("AceSerializer-3.0")
+--local Serializer = LibStub:GetLibrary("AceSerializer-3.0")
 local LibSerialize = LibStub("LibSerialize")
 
 local configForDeflate = {level = 9}
