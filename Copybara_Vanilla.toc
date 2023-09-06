@@ -1,4 +1,4 @@
-## Interface: 30402
+## Interface: 11404
 ## Title: Copybara
 ## Author: @project-author@
 ## Version: @project-version@

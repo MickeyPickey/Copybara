@@ -3,11 +3,8 @@ name: Package Beta
 on:
   push:
     tags:
+      - "**-alpha**"
       - "**-beta**"
-
-env:
-  #CF_API_KEY: ${{ secrets.CF_API_KEY }}
-  GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   release:
@@ -21,5 +18,10 @@ jobs:
           args: "--no-color -q"
           annotate: warning
 
-      - name: Create Package
-        uses: BigWigsMods/packager@v2
+      - name: Create Beta Package
+        uses: BigWigsMods/packager@master
+        env:
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+          #WOWI_API_TOKEN: ${{ secrets.WOWI_API_TOKEN }}
+          #WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}

@@ -7,26 +7,80 @@ exclude_files = {
 }
 
 ignore = {
-  "11./SLASH_.*", -- Setting an undefined (Slash handler) global variable
-  "11./BINDING_.*", -- Setting an undefined (Keybinding header) global variable
-  "113", -- Accessing an undefined (Lua ENUM type) global variable
+  "212", -- Unused argument
+  --"212/self", -- Unused self argument
+  "213", -- Unused loop variable
+  "214", -- used variable with "_" unused hint.
+  "113", -- Accessing an undefined global variable
+  "611", "612", "613", "614",
+
+
+  --"11./SLASH_.*", -- Setting an undefined (Slash handler) global variable
+  --"11./BINDING_.*", -- Setting an undefined (Keybinding header) global variable
   --"113/LE_.*", -- Accessing an undefined (Lua ENUM type) global variable
   --"113/NUM_LE_.*", -- Accessing an undefined (Lua ENUM type) global variable
-  "211", -- Unused local variable
-  "211/L", -- Unused local variable "L"
-  "211/CL", -- Unused local variable "CL"
-  "212/self", -- Unused self argument
-  "212", -- Unused argument
-  "213", -- Unused loop variable
-  "214", -- unused hint
-  -- "231", -- Set but never accessed
-  "311", -- Value assigned to a local variable is unused
-  "314", -- Value of a field in a table literal is unused
-  "42.", -- Shadowing a local variable, an argument, a loop variable.
-  "43.", -- Shadowing an upvalue, an upvalue argument, an upvalue loop variable.
-  "542", -- An empty if branch
-  "581", --  error-prone operator orders
-  "582", --  error-prone operator orders
+  --"211", -- Unused local variable
+  --"211/L", -- Unused local variable "CL"
+  --"211/CL", -- Unused local variable "CL"
+  --"231", -- Set but never accessed
+  --"311", -- Value assigned to a local variable is unused
+  --"314", -- Value of a field in a table literal is unused
+  --"42.", -- Shadowing a local variable, an argument, a loop variable.
+  --"43.", -- Shadowing an upvalue, an upvalue argument, an upvalue loop variable.
+  --"542", -- An empty if branch
+
+  --[[ Warnings list
+      -- 011 A syntax error.
+      -- 021 An invalid inline option.
+      -- 022 An unpaired inline push directive.
+      -- 023 An unpaired inline pop directive.
+      -- 111 Setting an undefined global variable.
+      -- 112 Mutating an undefined global variable.
+      -- 113 Accessing an undefined global variable.
+      -- 121 Setting a read-only global variable.
+      -- 122 Setting a read-only field of a global variable.
+      -- 131 Unused implicitly defined global variable.
+      -- 142 Setting an undefined field of a global variable.
+      -- 143 Accessing an undefined field of a global variable.
+      -- 211 Unused local variable.
+      -- 212 Unused argument.
+      -- 213 Unused loop variable.
+      -- 221 Local variable is accessed but never set.
+      -- 231 Local variable is set but never accessed.
+      -- 232 An argument is set but never accessed.
+      -- 233 Loop variable is set but never accessed.
+      -- 241 Local variable is mutated but never accessed.
+      -- 311 Value assigned to a local variable is unused.
+      -- 312 Value of an argument is unused.
+      -- 313 Value of a loop variable is unused.
+      -- 314 Value of a field in a table literal is unused.
+      -- 321 Accessing uninitialized local variable.
+      -- 331 Value assigned to a local variable is mutated but never accessed.
+      -- 341 Mutating uninitialized local variable.
+      -- 411 Redefining a local variable.
+      -- 412 Redefining an argument.
+      -- 413 Redefining a loop variable.
+      -- 421 Shadowing a local variable.
+      -- 422 Shadowing an argument.
+      -- 423 Shadowing a loop variable.
+      -- 431 Shadowing an upvalue.
+      -- 432 Shadowing an upvalue argument.
+      -- 433 Shadowing an upvalue loop variable.
+      -- 511 Unreachable code.
+      -- 512 Loop can be executed at most once.
+      -- 521 Unused label.
+      -- 531 Left-hand side of an assignment is too short.
+      -- 532 Left-hand side of an assignment is too long.
+      -- 541 An empty do end block.
+      -- 542 An empty if branch.
+      -- 551 An empty statement.
+      -- 611 A line consists of nothing but whitespace.
+      -- 612 A line contains trailing whitespace.
+      -- 613 Trailing whitespace in a string.
+      -- 614 Trailing whitespace in a comment.
+      -- 621 Inconsistent indentation (SPACE followed by TAB).
+      -- 631 Line is too long.
+  --]]
 }
 
 globals = {
@@ -36,15 +90,6 @@ globals = {
 
   -- misc custom
   "LibStub",
-
-  -- Manually added API function
-  "ChatFrame_ReceiveAllPrivateMessages",
-  "ChatFrame_AddMessageGroup",
-  "ChatFrame_AddChannel",
-  "FCF_ResetAllWindows",
-
-  -- Manually added globals
-  "NUM_CHAT_WINDOWS",
 
   -- Api functions
   "GetNumPrimaryProfessions",
@@ -4304,8 +4349,6 @@ globals = {
   "tContains",
   "tDeleteItem",
   "tostringall",
-  "ChatFrame_RemoveAllMessageGroups",
-  "ChatFrame_RemoveAllChannels",
 
   -- Constants.lua
   "EXPANSION_LEVEL_CLASSIC",
